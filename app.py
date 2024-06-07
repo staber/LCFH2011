@@ -232,9 +232,13 @@ with tab4:
         player_time_table = execute_query(conn.table(player).select("*").gt("mile_time", 0), ttl=0)
 
         # st.dataframe(player_shot_table.data, use_container_width=True)
+        if player_shot_table.data:
+            st.bar_chart(data=player_shot_table.data, x="activity_date", y="shots", use_container_width=True)
+        else:
+            st.write("No player shooting data found.")
         
-        st.bar_chart(data=player_shot_table.data, x="activity_date", y="shots", use_container_width=True)
-        
-        st.divider()
-        
-        st.line_chart(data=player_time_table.data, x="activity_date", y="mile_time", use_container_width=True)
+        if player_time_table.data:
+            st.divider()
+            st.line_chart(data=player_time_table.data, x="activity_date", y="mile_time", use_container_width=True)
+        else:
+            st.write("No player running data found.")
