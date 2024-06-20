@@ -4,6 +4,9 @@ from st_supabase_connection import SupabaseConnection, execute_query
 st.set_page_config(page_title="LCFH 2011", page_icon="https://raw.githubusercontent.com/staber/Supabase-Leaderboard/master/public/android-chrome-512x512.png",
                     layout="centered", initial_sidebar_state="auto", menu_items=None)
 
+def wide_space_default():
+    st.set_page_config(layout="wide")
+                   
 # Add row to player table
 def add_shots(id, name, shots, date):
    #st.toast(str(id) + ": Add " + str(shots) + " shots for " + str(name) + " on " + date.strftime("%Y-%m-%d"))
@@ -47,6 +50,8 @@ def getPlayerList():
     for row in shooting_leaderboard.data:
         output.append(f"{row['first']}_{row['last']}")
     return output
+
+wide_space_default()
 
 # Initialize connection.
 conn = st.connection(
