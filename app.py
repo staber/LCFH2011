@@ -2,7 +2,7 @@ import streamlit as st
 from st_supabase_connection import SupabaseConnection, execute_query
 
 st.set_page_config(page_title="LCFH 2011", page_icon="https://raw.githubusercontent.com/staber/Supabase-Leaderboard/master/public/android-chrome-512x512.png",
-                    layout="centered", initial_sidebar_state="auto", menu_items=None)
+                    layout="wide", initial_sidebar_state="auto", menu_items=None)
 
 def wide_space_default():
     st.set_page_config(layout="wide")
@@ -51,7 +51,7 @@ def getPlayerList():
         output.append(f"{row['first']}_{row['last']}")
     return output
 
-wide_space_default()
+# wide_space_default()
 
 # Initialize connection.
 conn = st.connection(
